@@ -25,7 +25,7 @@ class FilterList extends PureComponent {
     if (
       Object.values(usedFilters.price).filter(Boolean).length > 0
       || Object.values(usedFilters.quantity).filter(Boolean).length > 0
-      || usedFilters.available
+      || usedFilters.available || usedFilters.name || usedFilters.sublevel_id
     ) {
       cleanFilters();
     }

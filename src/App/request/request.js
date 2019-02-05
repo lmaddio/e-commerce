@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { clearStorage } from '../redux/localStorage';
 
 export const HTTP_METHODS = {
   GET: 'GET',
@@ -54,7 +55,7 @@ class AppRequest {
 
   static handleLogout() {
     authToken.clear();
-    window.location = '/';
+    clearStorage();
     throw new Error({ message: 'Token expired' });
   }
 

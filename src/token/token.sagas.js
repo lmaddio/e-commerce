@@ -4,13 +4,12 @@ import {
 import { authToken } from 'App/request/request';
 import {
   SEND_TOKEN_TO_SAGAS,
-  GET_TOKEN,
+  CLEAN_TOKEN,
   GET_TOKEN_FROM_COOKIES,
 } from './token.constants';
 import {
   setToken,
   setTokenError,
-  cleanToken,
 } from './token.actions';
 
 export function* getTokenFromCookies() {
@@ -41,8 +40,8 @@ export function* saveToken(action) {
 
 export function* cleanTokenSaga() {
   try {
-    yield put(cleanToken());
-    yield call(authToken.clear);
+    authToken.clear();
+    yield put(setTokenError());
   } catch (error) {
     console.error(error);
   }
@@ -50,7 +49,7 @@ export function* cleanTokenSaga() {
 
 function* tokenSaga() {
   yield takeLatest(SEND_TOKEN_TO_SAGAS, saveToken);
-  yield takeLatest(GET_TOKEN.ERROR, cleanTokenSaga);
+  yield takeLatest(CLEAN_TOKEN, cleanTokenSaga);
   yield takeLatest(GET_TOKEN_FROM_COOKIES, getTokenFromCookies);
 }
 

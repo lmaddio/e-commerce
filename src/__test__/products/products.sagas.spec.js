@@ -132,6 +132,7 @@ describe('products sagas', () => {
         FILTER_PRODUCTS.CLEAN,
         SORT_PRODUCTS.SET,
         SORT_PRODUCTS.CLEAN,
+        FILTER_PRODUCTS.CLEAN,
         PAGINATION.SET,
       ], fetchProducts),
     );

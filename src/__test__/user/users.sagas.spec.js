@@ -1,6 +1,7 @@
 import {
   call, put, takeLatest,
 } from 'redux-saga/effects';
+import { clearStorage } from 'App/redux/localStorage';
 import { sendTokenToSagas, cleanToken } from 'token/token.actions';
 import { removeAllItems } from 'cart/cart.actions';
 import { LOGIN_USER, LOGOUT_USER, PROFILE } from 'user/users.constants';
@@ -103,6 +104,8 @@ describe('user sagas', () => {
     expect(gen.next().value).toEqual(put(cleanToken()));
 
     expect(gen.next().value).toEqual(put(removeAllItems()));
+
+    expect(gen.next().value).toEqual(call(clearStorage));
 
     expect(gen.next().value).toEqual(put(setLogoutSuccess()));
 

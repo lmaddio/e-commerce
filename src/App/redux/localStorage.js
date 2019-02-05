@@ -2,6 +2,10 @@ import { validateArrays } from '../utils';
 
 let items = [];
 
+export const clearStorage = () => {
+  window.localStorage.clear();
+};
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
@@ -12,6 +16,7 @@ export const loadState = () => {
     items = cartState.cart.items.map(item => item);
     return cartState;
   } catch (err) {
+    clearStorage();
     return undefined;
   }
 };

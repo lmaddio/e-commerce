@@ -1,6 +1,7 @@
 import {
   call, put, takeLatest,
 } from 'redux-saga/effects';
+import { clearStorage } from 'App/redux/localStorage';
 import { sendTokenToSagas, cleanToken } from 'token/token.actions';
 import { removeAllItems } from 'cart/cart.actions';
 import { LOGIN_USER, LOGOUT_USER, PROFILE } from './users.constants';
@@ -56,6 +57,7 @@ export function* setUserProfile({ payload }) {
 export function* logoutUser() {
   yield put(cleanToken());
   yield put(removeAllItems());
+  yield call(clearStorage);
   yield put(setLogoutSuccess());
 }
 

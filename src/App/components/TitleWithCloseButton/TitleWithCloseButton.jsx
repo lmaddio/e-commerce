@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button, UncontrolledTooltip } from 'reactstrap';
 import styles from './TitleWithCloseButton.module.css';
 
 const TitleWithCloseButton = ({ title, onClickTitle, onClickClean }) => (
@@ -14,7 +14,12 @@ const TitleWithCloseButton = ({ title, onClickTitle, onClickClean }) => (
     >
       <span className="dropdown-toggle">{title}</span>
     </Button>
-    <Button close onClick={onClickClean} />
+    <Button close onClick={onClickClean} id={title} />
+    <UncontrolledTooltip placement="left" target={title} innerClassName={styles.tooltip}>
+      Click here to clear the
+      {' '}
+      {title}
+    </UncontrolledTooltip>
   </div>
 );
 
