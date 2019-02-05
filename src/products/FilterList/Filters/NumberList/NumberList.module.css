@@ -1,0 +1,14 @@
+.fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.title {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.arrow {
+    width: 100%;
+    max-width: 1rem;
+}

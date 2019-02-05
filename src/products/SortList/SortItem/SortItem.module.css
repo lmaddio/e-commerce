@@ -1,0 +1,18 @@
+.arrow {
+    max-width: 1rem;
+    width: 100%;
+}
+
+.titleSeparator {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.selected {
+    color: green;
+}

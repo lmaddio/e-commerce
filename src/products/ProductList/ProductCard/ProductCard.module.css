@@ -1,0 +1,49 @@
+.card {
+    margin-bottom: 1rem;
+    width: 190px;
+    font-size: 0.9rem;
+}
+
+.imageContainer {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cardImage {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.cardBody {
+    padding: 1rem;
+}
+
+.cardTitle {
+    font-weight: 700;
+    text-align: left;
+}
+
+.description {
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    font-weight: 600;
+}
+
+.noMoreItems {
+    margin-bottom: 0.5rem;
+    color: violet;
+    float: right;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
