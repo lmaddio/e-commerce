@@ -86,6 +86,7 @@ describe('FilterList component', () => {
     });
 
     it('toggleDisplayFilter', () => {
+      wrapper.setState({ displayFilter: false });
       expect(wrapper.state()).toEqual({ displayFilter: false });
       instance.toggleDisplayFilter();
       expect(wrapper.state()).toEqual({ displayFilter: true });

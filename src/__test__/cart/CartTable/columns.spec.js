@@ -3,6 +3,7 @@ import columns from 'cart/CartTable/columns';
 jest.mock('App/utils', () => ({
   addThousandsSeparator: val => val,
 }));
+jest.mock('cart/CartTable/TableComponents/ModalInput', () => 'ModalInput');
 jest.mock('cart/CartTable/Buttons/RemoveButton.container', () => 'RemoveButton');
 jest.mock('cart/CartTable/CartTable.module.css', () => ({
   middleSizeCell: 'middleSizeCell',
@@ -12,6 +13,7 @@ jest.mock('cart/utils', () => (component, props) => [component, props]);
 const addThousandsSeparator = jest.fn();
 const passPropsToComponent = jest.fn();
 const RemoveButton = 'RemoveButton';
+const Input = 'ModalInput';
 const styles = {
   middleSizeCell: 'middleSizeCell',
 };
@@ -29,8 +31,9 @@ const EXPECTED_COLUMNS = [
   {
     title: 'Count',
     property: 'quantity',
+    component: Input,
+    className: styles.hoverable,
     format: quantity => (quantity ? addThousandsSeparator(quantity) : '0'),
-    className: styles.middleSizeCell,
   },
   {
     title: 'Total',
@@ -40,7 +43,6 @@ const EXPECTED_COLUMNS = [
   {
     title: '',
     property: 'id',
-    className: styles.middleSizeCell,
     format: id => passPropsToComponent(RemoveButton, { id, close: true }),
   },
 ];

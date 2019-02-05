@@ -125,6 +125,7 @@ describe('SortList component', () => {
     });
 
     it('toggleDisplaySort', () => {
+      wrapper.setState({ displaySort: false });
       expect(wrapper.state()).toEqual({ displaySort: false });
       instance.toggleDisplaySort();
       expect(wrapper.state()).toEqual({ displaySort: true });

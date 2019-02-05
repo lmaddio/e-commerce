@@ -22,7 +22,7 @@ describe('Header component', () => {
     const wrapper = shallow(
       <Header columns={columns} />,
     );
-    expect(wrapper.find('div')).toHaveLength(columns.length);
+    expect(wrapper.find('div')).toHaveLength(columns.length + 1);
     expect(wrapper.find('span')).toHaveLength(2);
     expect(wrapper.find('span').at(0).text()).toEqual('title1');
   });
