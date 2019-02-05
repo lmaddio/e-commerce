@@ -39,6 +39,7 @@ export function* startUserProfileRequest() {
       throw new Error('Error getting profile', response.status);
     }
   } catch (error) {
+    yield put(cleanToken());
     yield put(setUserProfileError(error.message));
   }
 }

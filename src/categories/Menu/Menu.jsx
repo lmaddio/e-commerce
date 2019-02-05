@@ -36,7 +36,7 @@ class Menu extends React.Component {
     return (
       <Dropdown isOpen={dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret>
-          <span>Search by Categories</span>
+          <span>Categories</span>
         </DropdownToggle>
         <DropdownMenu className={styles.menu}>
           <SubMenu categories={categories} depth={1}>

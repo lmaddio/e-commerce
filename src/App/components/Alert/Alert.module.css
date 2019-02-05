@@ -1,0 +1,6 @@
+.alertPosition {
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    z-index: 9999;
+}

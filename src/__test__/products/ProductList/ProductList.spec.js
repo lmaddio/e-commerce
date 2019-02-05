@@ -31,7 +31,7 @@ const props = {
   error: 'There was an error',
   isLoading: false,
   pagination: {
-    limit: 10,
+    limit: 14,
     page: 1,
     lastPage: 2,
   },

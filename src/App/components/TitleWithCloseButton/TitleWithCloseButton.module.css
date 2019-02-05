@@ -1,0 +1,17 @@
+.titleSeparator {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleSeparator button:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.buttonLeftPadding {
+    padding: 0;
+    text-align: left;
+}

@@ -2,7 +2,6 @@ import {
   getLoginError,
   getUserProfile,
   getUserName,
-  getUserEmail,
 } from 'user/users.selectors';
 
 const mockState = {
@@ -64,21 +63,6 @@ describe('user selectors', () => {
 
       getUserName({ user: { profile: { name: 'test' } } });
       expect(getUserName.recomputations()).toEqual(3);
-    });
-  });
-
-  describe('getUserEmail', () => {
-    it('Should return the value and recompute properly', () => {
-      let result = getUserEmail(mockState);
-      expect(result).toEqual('email');
-      expect(getUserEmail.recomputations()).toEqual(1);
-
-      result = getUserEmail({ user: { profile: { email: 'test' } } });
-      expect(result).toEqual('test');
-      expect(getUserEmail.recomputations()).toEqual(2);
-
-      getUserEmail({ user: { profile: { email: 'test' } } });
-      expect(getUserEmail.recomputations()).toEqual(3);
     });
   });
 });

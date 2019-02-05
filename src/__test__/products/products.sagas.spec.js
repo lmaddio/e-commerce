@@ -25,15 +25,15 @@ import productsSagas, {
 } from 'products/products.sagas';
 
 const HEADER_LINK = [
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=10>; rel="first",',
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=10>; rel="prev",',
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=3&_limit=10>; rel="next",',
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=7&_limit=10>; rel="last"',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=14>; rel="first",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=14>; rel="prev",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=3&_limit=14>; rel="next",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=7&_limit=14>; rel="last"',
 ].join(' ');
 const HEADER_LINK_WITHOUT_LAST = [
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=10>; rel="first",',
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=10>; rel="prev",',
-  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=3&_limit=10>; rel="next",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=14>; rel="first",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=1&_limit=14>; rel="prev",',
+  '<http://localhost:3005/products?_sort=quantity&_order=DESC&_page=3&_limit=14>; rel="next",',
 ].join(' ');
 
 describe('products sagas', () => {

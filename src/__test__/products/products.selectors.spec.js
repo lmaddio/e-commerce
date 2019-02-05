@@ -24,7 +24,7 @@ const mockState = {
     },
     pagination: {
       page: 1,
-      limit: 10,
+      limit: 14,
       lastPage: 5,
     },
     filters: {
@@ -180,7 +180,7 @@ describe('products selectors', () => {
     it('Should return the value and recompute properly', () => {
       const expected = {
         page: 1,
-        limit: 10,
+        limit: 14,
         lastPage: 5,
       };
       let result = getPagination(mockState);

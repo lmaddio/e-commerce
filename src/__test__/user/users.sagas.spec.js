@@ -66,8 +66,10 @@ describe('user sagas', () => {
     expect(gen.next().value).toEqual(call(fetchUserProfile));
 
     expect(gen.next({ status: 204, json: () => 'response' }).value).toEqual(
-      put(setUserProfileError('errorMsg')),
+      put(cleanToken()),
     );
+
+    expect(gen.next().value).toEqual(put(setUserProfileError('errorMsg')));
 
     expect(gen.next().done).toEqual(true);
   });

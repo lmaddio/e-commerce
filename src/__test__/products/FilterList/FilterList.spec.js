@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 import FilterList from 'products/FilterList/FilterList';
 
-jest.mock('App/components/common/TitleWithCloseButton', () => 'TitleWithCloseButton');
+jest.mock('App/components/TitleWithCloseButton', () => 'TitleWithCloseButton');
 jest.mock('products/FilterList/Filters/CheckboxList', () => 'CheckboxList');
 jest.mock('products/FilterList/Filters/NumberList', () => 'NumberList');
 jest.mock('products/FilterList/FilterList.module.css', () => ({}));

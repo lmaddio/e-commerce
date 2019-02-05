@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Alert from 'App/components/common/Alert';
+import Alert from 'App/components/Alert';
 import TableComponents from './TableComponents';
 import BuyButton from './Buttons/BuyButton.container';
 import HEADER_COLUMNS from './columns';
@@ -92,7 +92,7 @@ class CartTable extends React.Component {
             disabled={isLoading}
             type="button"
             style={{ float: 'right' }}
-            callback={this.onBuyCallback}
+            onCustomClick={this.onBuyCallback}
           >
             Comprar
           </BuyButton>

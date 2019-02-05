@@ -16,8 +16,3 @@ export const getUserName = createSelector(
   getUserProfile,
   profile => profile.name,
 );
-
-export const getUserEmail = createSelector(
-  getUserProfile,
-  profile => profile.email,
-);

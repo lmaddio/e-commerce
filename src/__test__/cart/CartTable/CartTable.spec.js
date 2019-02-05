@@ -7,7 +7,7 @@ import CartTable from 'cart/CartTable/CartTable';
 jest.mock('react-router-dom', () => ({
   Link: () => 'Link',
 }));
-jest.mock('App/components/common/Alert', () => 'Alert');
+jest.mock('App/components/Alert', () => 'Alert');
 jest.mock('cart/CartTable/TableComponents', () => ({
   Header: () => 'Header',
   Row: () => 'Row',

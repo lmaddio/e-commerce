@@ -13,7 +13,7 @@ const initialState = {
   },
   pagination: {
     page: 1,
-    limit: 10,
+    limit: 14,
     lastPage: null,
   },
   filters: {
@@ -41,7 +41,7 @@ const mockState = {
   },
   pagination: {
     page: 1,
-    limit: 10,
+    limit: 14,
     lastPage: null,
   },
   filters: {

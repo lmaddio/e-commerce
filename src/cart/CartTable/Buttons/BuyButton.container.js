@@ -5,10 +5,15 @@ import { setBuyLoadingState } from '../../cart.actions';
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => {
     dispatch(setBuyLoadingState());
-    if (ownProps.callback) {
-      ownProps.callback();
+    if (ownProps.onCustomClick) {
+      ownProps.onCustomClick();
     }
   },
 });
 
-export default connect(null, mapDispatchToProps)(Button);
+const mergeProps = (stateToProps, dispatchToProps, { onCustomClick, ...onRestProps }) => ({
+  ...onRestProps,
+  ...dispatchToProps,
+});
+
+export default connect(null, mapDispatchToProps, mergeProps)(Button);

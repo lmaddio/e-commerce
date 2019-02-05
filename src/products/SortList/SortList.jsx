@@ -5,7 +5,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
-import TitleWithCloseButton from 'App/components/common/TitleWithCloseButton';
+import TitleWithCloseButton from 'App/components/TitleWithCloseButton';
 import SortItem from './SortItem';
 import styles from './SortList.module.css';
 
@@ -89,8 +89,8 @@ SortList.propTypes = {
     fields: PropTypes.object,
     order: PropTypes.object,
     default: PropTypes.shape({
-      fields: PropTypes.object,
-      order: PropTypes.object,
+      fields: PropTypes.string,
+      order: PropTypes.string,
     }),
   }).isRequired,
   isLoading: PropTypes.bool.isRequired,

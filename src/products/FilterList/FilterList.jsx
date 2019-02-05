@@ -5,7 +5,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
-import TitleWithCloseButton from 'App/components/common/TitleWithCloseButton';
+import TitleWithCloseButton from 'App/components/TitleWithCloseButton';
 import CheckboxList from './Filters/CheckboxList';
 import NumberList from './Filters/NumberList';
 import styles from './FilterList.module.css';
