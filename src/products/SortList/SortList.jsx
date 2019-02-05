@@ -13,7 +13,7 @@ class SortList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      displaySort: false,
+      displaySort: window.innerWidth > 575,
     };
     this.cleanSort = this.cleanSort.bind(this);
     this.onChangeSort = this.onChangeSort.bind(this);

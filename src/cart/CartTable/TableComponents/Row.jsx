@@ -6,17 +6,24 @@ const Row = ({ rows, columns }) => rows.map(
   (row, rowIndex) => (
     <div className={styles.row} key={`row.${row.id}`}>
       {
-        columns.map(({ property, format, className = '' }, columnIndex) => (
-          <div
-            key={`cell.${row.id}.${columnIndex + 0}`}
-            className={`${className} ${styles.cell}`}
-            style={{
-              order: (10 + rowIndex + columnIndex),
-            }}
-          >
-            <span>{format ? format(row[property], row) : row[property]}</span>
-          </div>
-        ))
+        columns.map((column, columnIndex) => {
+          const {
+            property, format, className = '', component: Component,
+          } = column;
+          return (
+            <div
+              key={`cell.${row.id}.${columnIndex + 0}`}
+              className={`${className} ${styles.cell}`}
+              style={{ order: (10 + rowIndex + columnIndex) }}
+            >
+              {
+                Component
+                  ? (<Component {...column} {...row} />)
+                  : (<span>{format ? format(row[property], row) : row[property]}</span>)
+              }
+            </div>
+          );
+        })
       }
     </div>
   ),

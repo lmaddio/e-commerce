@@ -14,7 +14,7 @@ class FilterList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      displayFilter: false,
+      displayFilter: window.innerWidth > 575,
     };
     this.cleanFilters = this.cleanFilters.bind(this);
     this.toggleDisplayFilter = this.toggleDisplayFilter.bind(this);

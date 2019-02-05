@@ -50,7 +50,7 @@ class ProductCard extends PureComponent {
             {/* MESSAGE IF NOT AVAILABLE */}
             {
               !available
-                ? (<span className={styles.noMoreItems}>Paused :(</span>)
+                ? (<span className={styles.noMoreItems}>In Pause</span>)
                 : null
             }
           </CardText>

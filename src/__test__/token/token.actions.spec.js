@@ -1,6 +1,6 @@
 import {
   GET_TOKEN, SEND_TOKEN_TO_SAGAS,
-  RENEW_TOKEN, CLEAN_TOKEN, GET_TOKEN_FROM_COOKIES,
+  CLEAN_TOKEN, GET_TOKEN_FROM_COOKIES,
 } from 'token/token.constants';
 import {
   getToken,

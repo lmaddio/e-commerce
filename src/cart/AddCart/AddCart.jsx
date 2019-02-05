@@ -75,7 +75,7 @@ class AddCart extends PureComponent {
           <Button
             disabled={!availableForCart}
             outline
-            color={availableForCart ? 'primary' : 'secondary'}
+            color="secondary"
             style={{ maxWidth: '50px' }}
             onClick={this.removeFromCart}
           >
@@ -84,7 +84,7 @@ class AddCart extends PureComponent {
           <Button
             disabled={!availableForCart}
             outline
-            color={availableForCart ? 'primary' : 'secondary'}
+            color="secondary"
             style={{ maxWidth: '50px' }}
             onClick={this.sendToCart}
           >

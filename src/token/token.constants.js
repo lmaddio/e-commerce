@@ -9,6 +9,4 @@ export const CLEAN_TOKEN = 'CLEAN_TOKEN';
 
 export const SEND_TOKEN_TO_SAGAS = 'SEND_TOKEN_TO_SAGAS';
 
-export const RENEW_TOKEN = defineAction('RENEW_TOKEN', ['GET'], NAMESPACE);
-
 export const GET_TOKEN_FROM_COOKIES = 'GET_TOKEN_FROM_COOKIES';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Badge } from 'reactstrap';
 
 const BadgeCart = ({ inCart, dispatch, ...restProps }) => (
-  <Badge color="secondary" {...restProps}>{inCart.toString()}</Badge>
+  <Badge color="dark" {...restProps}>{inCart.toString()}</Badge>
 );
 
 BadgeCart.defaultProps = {

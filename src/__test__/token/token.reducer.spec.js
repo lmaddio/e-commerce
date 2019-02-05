@@ -40,8 +40,8 @@ describe('user reducer', () => {
     };
     const result = reducer(mockState, action);
     const expected = {
- error: mockState.error, expiresIn: 31, requesting: true, value: '123456' 
-};
+      error: mockState.error, expiresIn: 31, requesting: true, value: '123456',
+    };
     expect(result).toEqual(expected);
   });
 

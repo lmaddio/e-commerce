@@ -15,8 +15,6 @@ function hasToSendBody(type, data) {
   return isValidMethod && Boolean(data);
 }
 
-const getLocation = () => window.location.origin.replace('3000', '3005');
-
 export const authToken = {
   get() {
     const token = Cookies.get('AUTH_COOKIE');
@@ -55,12 +53,13 @@ class AppRequest {
   }
 
   static handleLogout() {
+    authToken.clear();
     window.location = '/';
     throw new Error({ message: 'Token expired' });
   }
 
-  constructor(url) {
-    this.url = url || getLocation();
+  constructor(url = '') {
+    this.url = url;
     this.doRequest = this.doRequest.bind(this);
     this.doGet = this.doGet.bind(this);
     this.doPost = this.doPost.bind(this);

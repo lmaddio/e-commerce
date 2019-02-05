@@ -1,6 +1,7 @@
 import { addThousandsSeparator } from 'App/utils';
 import passPropsToComponent from '../utils';
 import RemoveButton from './Buttons/RemoveButton.container';
+import Input from './TableComponents/ModalInput';
 import styles from './CartTable.module.css';
 
 const HEADER_COLUMNS = [
@@ -16,8 +17,9 @@ const HEADER_COLUMNS = [
   {
     title: 'Count',
     property: 'quantity',
+    component: Input,
+    className: styles.hoverable,
     format: quantity => (quantity ? addThousandsSeparator(quantity) : '0'),
-    className: styles.middleSizeCell,
   },
   {
     title: 'Total',
@@ -27,7 +29,6 @@ const HEADER_COLUMNS = [
   {
     title: '',
     property: 'id',
-    className: styles.middleSizeCell,
     format: id => passPropsToComponent(RemoveButton, { id, close: true }),
   },
 ];

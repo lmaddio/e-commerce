@@ -2,7 +2,6 @@ import {
   GET_TOKEN,
   CLEAN_TOKEN,
   SEND_TOKEN_TO_SAGAS,
-  RENEW_TOKEN,
   GET_TOKEN_FROM_COOKIES,
 } from 'token/token.constants';
 
@@ -21,10 +20,6 @@ describe('user constants', () => {
 
   it('SEND_TOKEN_TO_SAGAS Should have all its keys', () => {
     expect(SEND_TOKEN_TO_SAGAS).toEqual('SEND_TOKEN_TO_SAGAS');
-  });
-
-  it('RENEW_TOKEN Should have all its keys', () => {
-    expect(RENEW_TOKEN.GET).toEqual('TOKEN/RENEW_TOKEN_GET');
   });
 
   it('GET_TOKEN_FROM_COOKIES Should have all its keys', () => {

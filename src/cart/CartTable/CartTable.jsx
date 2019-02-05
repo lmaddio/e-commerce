@@ -13,7 +13,7 @@ class CartTable extends React.Component {
   static renderError(error) {
     const errorMessage = error || 'You don\'t have any product in your cart!';
     return (
-      <div className={`${styles.nonRows} ${styles.row}`}>
+      <div className={styles.nonRows}>
         <h5 className="text-center">
           {errorMessage}
         </h5>
@@ -73,9 +73,7 @@ class CartTable extends React.Component {
     return (
       <Fragment>
         <div className={styles.table}>
-          <div className={styles.header}>
-            <TableComponents.Header columns={HEADER_COLUMNS} />
-          </div>
+          <TableComponents.Header columns={HEADER_COLUMNS} />
           {
             items.length > 0
               ? (
@@ -91,7 +89,7 @@ class CartTable extends React.Component {
           <BuyButton
             disabled={isLoading}
             type="button"
-            style={{ float: 'right' }}
+            style={{ float: 'right', marginBottom: '1rem' }}
             onCustomClick={this.onBuyCallback}
           >
             Comprar

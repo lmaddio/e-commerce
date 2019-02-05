@@ -48,6 +48,6 @@ describe('ProductCard component', () => {
     wrapper.setProps({ available: false });
 
     expect(wrapper.find('span')).toHaveLength(5);
-    expect(wrapper.find('span').at(4).text()).toEqual('Paused :(');
+    expect(wrapper.find('span').at(4).text()).toEqual('In Pause');
   });
 });

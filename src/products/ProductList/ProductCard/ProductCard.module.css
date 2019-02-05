@@ -32,13 +32,15 @@
 }
 
 .label {
-    font-weight: 600;
+    font-weight: 550;
+    color: var(--gray);
 }
 
 .noMoreItems {
     margin-bottom: 0.5rem;
-    color: violet;
+    color: var(--gray-dark);
     float: right;
+    font-weight: 800;
 }
 
 .buttonContainer {

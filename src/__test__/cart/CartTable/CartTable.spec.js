@@ -1,7 +1,6 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { stub } from 'sinon';
 import CartTable from 'cart/CartTable/CartTable';
 
 jest.mock('react-router-dom', () => ({
