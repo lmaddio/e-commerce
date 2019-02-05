@@ -1,6 +1,7 @@
 /* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { shallow } from 'enzyme';
+import { stub } from 'sinon';
 import CartTable from 'cart/CartTable/CartTable';
 
 jest.mock('react-router-dom', () => ({
@@ -31,6 +32,8 @@ jest.mock('cart/CartTable/CartTable.module.css', () => ({
   table: 'table',
   header: 'header',
 }));
+
+jest.useFakeTimers();
 
 const items = [
   {
@@ -105,6 +108,43 @@ describe('CartTable component', () => {
         />,
       );
     });
+
+    it('onBuyCallback', () => {
+      const instance = wrapper.instance();
+      wrapper.setState({ showAlert: false });
+      expect(wrapper.state()).toEqual({ internalError: null, showAlert: false });
+      instance.onBuyCallback();
+      expect(wrapper.state()).toEqual({ internalError: null, showAlert: true });
+    });
+
+    it('componentDidUpdate', () => {
+      const instance = wrapper.instance();
+      instance.manageAlert = jest.fn();
+      wrapper.setProps({ isLoading: true });
+      instance.componentDidUpdate({ isLoading: false });
+      expect(instance.manageAlert).toBeCalled();
+    });
+
+    it('componentWillUnmount not call clearTimeout', () => {
+      const instance = wrapper.instance();
+      instance.componentWillUnmount();
+      expect(clearTimeout).not.toBeCalled();
+    });
+
+    it('componentWillUnmount call clearTimeout', () => {
+      const instance = wrapper.instance();
+      instance.manageAlert();
+      instance.componentWillUnmount();
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+    });
+
+    it('componentDidCatch will set state', () => {
+      const instance = wrapper.instance();
+      instance.componentDidCatch('error', 'info');
+      const errorMessage = 'There was an error, please try to reload the page';
+      expect(wrapper.state().internalError).toEqual(errorMessage);
+    });
+
     it('onDismissAlert', () => {
       const instance = wrapper.instance();
       wrapper.setState({ showAlert: true });
@@ -116,9 +156,13 @@ describe('CartTable component', () => {
     it('manageAlert', () => {
       const instance = wrapper.instance();
       expect(instance.clearAlertId).toEqual(null);
-
       instance.manageAlert();
+      expect(setTimeout).toHaveBeenCalledTimes(2);
+
       expect(instance.clearAlertId).toBeTruthy();
+      instance.manageAlert();
+
+      expect(clearTimeout).toHaveBeenCalledTimes(2);
     });
   });
 });

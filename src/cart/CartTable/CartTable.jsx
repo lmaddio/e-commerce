@@ -31,6 +31,7 @@ class CartTable extends React.Component {
     };
     this.onDismissAlert = this.onDismissAlert.bind(this);
     this.manageAlert = this.manageAlert.bind(this);
+    this.onBuyCallback = this.onBuyCallback.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -44,6 +45,10 @@ class CartTable extends React.Component {
     if (this.clearAlertId) {
       clearTimeout(this.clearAlertId);
     }
+  }
+
+  onBuyCallback() {
+    this.setState({ showAlert: true });
   }
 
   onDismissAlert() {
@@ -87,7 +92,7 @@ class CartTable extends React.Component {
             disabled={isLoading}
             type="button"
             style={{ float: 'right' }}
-            callback={() => this.setState({ showAlert: true })}
+            callback={this.onBuyCallback}
           >
             Comprar
           </BuyButton>

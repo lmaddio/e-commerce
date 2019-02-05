@@ -1,6 +1,7 @@
 import {
   call, put, takeLatest,
 } from 'redux-saga/effects';
+import sinon from 'sinon';
 import { authToken } from 'App/request/request';
 import {
   SEND_TOKEN_TO_SAGAS,
@@ -29,7 +30,7 @@ describe('token sagas', () => {
     expect(gen.next().done).toEqual(true);
   });
 
-  it('getTokenFromCookies - Should set error if any', () => {
+  it('getTokenFromCookies - Should get token from cookies and save in redux', () => {
     const gen = getTokenFromCookies();
 
     expect(gen.next().value).toEqual(call(authToken.get));
@@ -40,6 +41,7 @@ describe('token sagas', () => {
   });
 
   it('saveToken - Should retrieve token from cookies', () => {
+    const clock = sinon.useFakeTimers(new Date(2011, 9, 1).getTime());
     const token = { access_token: 'abcde', expires_in: 10 };
     const action = { payload: { token } };
     const expiresIn = new Date(new Date().getTime() + (token.expires_in * 60 * 1000));
@@ -54,6 +56,7 @@ describe('token sagas', () => {
     expect(gen.next().value).toEqual(call(authToken.set, newTokenFormat));
 
     expect(gen.next().done).toEqual(true);
+    clock.restore();
   });
 
   it('saveToken - Should set error if any', () => {
