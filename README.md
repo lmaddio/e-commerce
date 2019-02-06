@@ -8,6 +8,7 @@ Se puede ver en [heroku :D](https://el-baraton-l.herokuapp.com/)
 - Los datos se almacenan con **redux**, permitiendo desde cualquier componente traer los datos en memoria, **redux-sagas** para el manejo de datos de la store, tanto para lo asyncronico como lo sincrono.
 - Utilice **jest** y **enzyme** para el desarrollo de las pruebas unitarias.
 - **json-server** para generar los endpoints a utilizar.
+- El token tiene una duracion de 30 min! Luego de eso el usuario se deslogueara cuando haga un request que devuelva 401.
 
 -----
 
