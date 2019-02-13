@@ -43,7 +43,7 @@ export function* saveToken(action) {
 export function* cleanTokenSaga() {
   try {
     authToken.clear();
-    yield put(setTokenError());
+    yield put(setTokenError('logout'));
   } catch (error) {
     console.error(error);
   }

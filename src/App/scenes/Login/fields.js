@@ -5,12 +5,15 @@ export function validateEmail(email) {
 
 export const validatePassword = password => password.length > 5;
 
+export const getValidEmail = () => 'leonardo@email.com';
+export const getValidPassword = () => '123456';
+
 const fields = {
   email: {
     name: 'email',
     validator: validateEmail,
     type: 'email',
-    placeholder: 'leonardo@email.com',
+    placeholder: getValidEmail(),
     label: 'Email',
     validMessage: 'Valid email.',
     message: 'Uh oh! Looks like there is an issue with your email. Please input a correct email.',
@@ -19,7 +22,7 @@ const fields = {
     name: 'password',
     validator: validatePassword,
     type: 'password',
-    placeholder: '********',
+    placeholder: getValidPassword(),
     label: 'Password',
     message: 'Your password must have at least 6 characters.',
   },
