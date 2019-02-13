@@ -34,7 +34,7 @@ class ProductCard extends PureComponent {
           <CardTitle className={styles.cardTitle}>
             <h5>
               {name}
-              <Badge id={id} style={{ float: 'right' }} />
+              <Badge id={id} className={styles.badge} />
             </h5>
           </CardTitle>
           {/* PRICE */}

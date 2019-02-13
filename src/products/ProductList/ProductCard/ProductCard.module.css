@@ -6,6 +6,12 @@
     float: left;
 }
 
+.badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .imageContainer {
     height: 200px;
     display: flex;
@@ -27,6 +33,7 @@
 .cardTitle {
     font-weight: 700;
     text-align: left;
+    position: relative;
 }
 
 .description {
