@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import Input from 'App/components/ThemedInput';
 
 class InputSearch extends PureComponent {
   constructor(props) {

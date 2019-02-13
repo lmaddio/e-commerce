@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Input, Modal, ModalHeader, ModalBody, ModalFooter,
+  Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
+import Input from 'App/components/ThemedInput';
 import styles from './ModalInput.module.css';
 
 class ModalInput extends React.Component {

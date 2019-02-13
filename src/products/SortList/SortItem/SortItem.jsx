@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
 import arrowUp from 'images/up-arrow.svg';
 import arrowDown from 'images/down-arrow.svg';
 import { SORT_TYPES } from '../../products.constants';

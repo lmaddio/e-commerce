@@ -41,7 +41,8 @@
     border: 0;
 }
 
-.selected {
-    background-color: #6c757d;
-    color: white;
+.menuButton {
+    border: none;
+    height: 36px;
+    position: relative;
 }

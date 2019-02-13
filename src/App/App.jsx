@@ -7,6 +7,8 @@ import Login from './scenes/Login';
 import Search from './scenes/Search';
 import Cart from './scenes/Cart';
 import FullLoader from './components/FullLoader';
+import ThemedChangeButton from './components/ThemedChangeButton';
+import ThemeProvider from './context/ThemeContext';
 import AppRouter from './router';
 
 const FunnyMessage = lazy(() => import('./components/FunnyMessage'));
@@ -48,6 +50,7 @@ class App extends React.Component {
   render() {
     const { hasToken } = this.props;
     const { error } = this.state;
+  
     if (error) {
       return (<SuspenseFunnyMessage />);
     }
@@ -60,17 +63,21 @@ class App extends React.Component {
             isLogged={hasToken}
             component={Login}
           />
-          <AppRouter.PrivateRoute
-            path="/"
-            exact
-            isLogged={hasToken}
-            component={Search}
-          />
-          <AppRouter.PrivateRoute
-            path="/cart"
-            isLogged={hasToken}
-            component={Cart}
-          />
+          <ThemeProvider>
+            <ThemedChangeButton>
+              <AppRouter.PrivateRoute
+                path="/"
+                exact
+                isLogged={hasToken}
+                component={Search}
+              />
+              <AppRouter.PrivateRoute
+                path="/cart"
+                isLogged={hasToken}
+                component={Cart}
+              />
+            </ThemedChangeButton>
+          </ThemeProvider>
         </div>
       </Router>
     );

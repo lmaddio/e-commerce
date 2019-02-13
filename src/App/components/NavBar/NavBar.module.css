@@ -1,5 +1,5 @@
 .NavBarReplace {
-    margin-bottom: calc(56px * 1.5);
+    margin-bottom: calc(56px + 15px);
 }
 
 .NavBar {
@@ -10,4 +10,15 @@
 .navBarCollapse {
     flex-grow: 0;
     min-width: 100px;
+}
+
+.navBrand {
+    color: inherit;
+    opacity: 0.8;
+}
+
+.navBrand:hover {
+    opacity: 1;
+    color: inherit;
+    text-decoration: none;
 }

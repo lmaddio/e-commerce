@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ListGroupItem,
-  Button,
-  Input,
   InputGroup,
   InputGroupAddon,
 } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
+import Input from 'App/components/ThemedInput';
 import rightArrow from 'images/right-arrow.svg';
 import styles from './NumberList.module.css';
 
@@ -74,7 +74,6 @@ class NumberList extends React.PureComponent {
           <InputGroupAddon addonType="append">
             <Button
               outline
-              color="secondary"
               disabled={isButtonDisabled}
               onClick={this.setValues}
             >

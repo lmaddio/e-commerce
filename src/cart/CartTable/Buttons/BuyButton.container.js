@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Button } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
 import { setBuyLoadingState } from '../../cart.actions';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

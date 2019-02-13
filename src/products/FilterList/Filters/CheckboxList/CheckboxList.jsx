@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import styles from './CheckboxList.module.css';
 
-// workaround for testing an anonymous function passed to other component
+// Workaround for testing an anonymous function passed to other component
 export function onInputChange(callback, param) {
   return () => callback(param);
 }

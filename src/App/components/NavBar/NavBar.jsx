@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   Collapse,
-  Navbar,
+  NavbarBrand,
   NavbarToggler,
   Nav,
 } from 'reactstrap';
-import NavLink from '../NavLink';
+import ThemedLink from '../ThemedLink';
+import Navbar from './ThemedNavbar';
 import styles from './NavBar.module.css';
 
-class AppNavBar extends React.Component {
+class AppNavBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -32,25 +33,21 @@ class AppNavBar extends React.Component {
     const { children, logout } = this.props;
     return (
       <div className={styles.NavBarReplace}>
-        <Navbar
-          color="light"
-          light
-          fixed="top"
-          expand="md"
-          className={!isOpen ? styles.NavBar : ''}
-        >
+        <Navbar className={!isOpen ? styles.NavBar : ''}>
           {children}
-          <Link to="/" className="nav-link">
-            El Baraton
-          </Link>
+          <NavbarBrand tag="span">
+            <Link to="/" className={styles.navBrand}>
+              El Baraton
+            </Link>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar className={styles.navBarCollapse}>
             <Nav navbar>
-              <NavLink
+              <ThemedLink
                 to="/cart"
                 title="Cart"
               />
-              <NavLink
+              <ThemedLink
                 onClick={logout}
                 title="Log out"
               />

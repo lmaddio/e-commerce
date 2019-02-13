@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Collapse,
-} from 'reactstrap';
+import { Collapse } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
 import arrowUp from 'images/up-arrow.svg';
 import arrowDown from 'images/down-arrow.svg';
 import styles from './CollapsibleMenu.module.css';
@@ -71,14 +69,11 @@ class CollapsibleMenu extends Component {
         onBlur={this.onBlur}
       >
         <Button
-          outline
+          outline={!(isLastSublevel && dropdownOpen)}
           block
           type="button"
           onClick={this.onToggle}
-          style={{
-            border: 'none', height: '36px', position: 'relative',
-          }}
-          className={(isLastSublevel && dropdownOpen) ? styles.selected : ''}
+          className={styles.menuButton}
           innerRef={this.buttonTrigger}
         >
           <span

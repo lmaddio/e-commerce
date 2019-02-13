@@ -1,23 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Collapse,
-  ListGroup,
-  ListGroupItem,
-} from 'reactstrap';
-import TitleWithCloseButton from 'App/components/TitleWithCloseButton';
+import CollapsableList from 'App/components/CollapsableList';
 import SortItem from './SortItem';
-import styles from './SortList.module.css';
 
 class SortList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      displaySort: window.innerWidth > 575,
-    };
     this.cleanSort = this.cleanSort.bind(this);
     this.onChangeSort = this.onChangeSort.bind(this);
-    this.toggleDisplaySort = this.toggleDisplaySort.bind(this);
   }
 
   onChangeSort(newSort) {
@@ -37,43 +27,27 @@ class SortList extends PureComponent {
     }
   }
 
-  toggleDisplaySort() {
-    const { displaySort } = this.state;
-    this.setState({ displaySort: !displaySort });
-  }
-
   render() {
     const { sortTypes, sort, isLoading } = this.props;
-    const { displaySort } = this.state;
-    const disableEvents = isLoading ? { pointerEvents: 'none' } : {};
     return (
-      <section style={disableEvents}>
-        <ListGroup>
-          <ListGroupItem color="secondary">
-            <TitleWithCloseButton
-              title="Sort"
-              onClickTitle={this.toggleDisplaySort}
-              onClickClean={this.cleanSort}
+      <CollapsableList
+        title="Sort"
+        closeAction={this.cleanSort}
+        isLoading={isLoading}
+      >
+        {
+          Object.values(sortTypes.fields).map(({ label, name }) => (
+            <SortItem
+              key={`sortList.${name}`}
+              name={name}
+              label={label}
+              currentOrder={sort.order}
+              selected={sort.field === name}
+              onChangeSort={this.onChangeSort}
             />
-          </ListGroupItem>
-          <Collapse isOpen={displaySort}>
-            <ListGroupItem className={styles.sortTitleContainer}>
-              {
-                Object.values(sortTypes.fields).map(({ label, name }) => (
-                  <SortItem
-                    key={`sortList.${name}`}
-                    name={name}
-                    label={label}
-                    currentOrder={sort.order}
-                    selected={sort.field === name}
-                    onChangeSort={this.onChangeSort}
-                  />
-                ))
-              }
-            </ListGroupItem>
-          </Collapse>
-        </ListGroup>
-      </section>
+          ))
+        }
+      </CollapsableList>
     );
   }
 }

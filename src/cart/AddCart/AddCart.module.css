@@ -1,4 +1,37 @@
 .imageInButton {
-    max-width: 100%;
-    height: auto;
+    width: 22px;
+    height: 22px;
+}
+
+.cartRow {
+    display: block;
+}
+
+.cartCol {
+    padding-left: 0;
+    padding-right: 0;
+    float: left;
+}
+
+.buttonSize {
+    max-width: 48px;
+    flex-grow: 1;
+}
+
+.cartCol:first-child {
+    margin-bottom: 10px;
+}
+
+
+/* 
+  Can't use variables in media query
+  https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+
+  @media (min-width: var(--breakpoint-sm)) {
+*/
+
+@media (min-width: 576px) {
+    .cartCol:first-child {
+        margin-bottom: 0;
+    }
 }

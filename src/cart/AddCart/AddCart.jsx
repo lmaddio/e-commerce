@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
-  InputGroup,
-  Input,
   InputGroupAddon,
-  Button,
+  Col,
 } from 'reactstrap';
+import Button from 'App/components/ThemedButton';
+import Input from 'App/components/ThemedInput';
 import cartPlusImage from 'images/shopping-cart-add-button.svg';
 import cartMinusImage from 'images/shopping-cart-minus-button.svg';
 import styles from './AddCart.module.css';
@@ -18,27 +18,31 @@ class AddCart extends PureComponent {
     };
     this.onChange = this.onChange.bind(this);
     this.sendToCart = this.sendToCart.bind(this);
+    this.updateValue = this.updateValue.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     const { inCart } = this.props;
     if (prevProps.inCart !== inCart) {
-      this.setState({ value: inCart.toString() });
+      this.updateValue(!inCart ? 1 : inCart);
     }
   }
 
   onChange(event) {
     const { quantity } = this.props;
-    const { value } = event.target;
+    let { value } = event.target;
     const intValue = parseInt(value, 10);
-    if (intValue < 1) {
-      this.setState({ value: '1' });
-    } else if (intValue > quantity) {
-      this.setState({ value: quantity.toString() });
-    } else {
-      this.setState({ value });
+    if (intValue > quantity) {
+      value = quantity;
+    } else if (intValue < 0) {
+      value = 0;
     }
+    this.updateValue(value);
+  }
+
+  updateValue(value) {
+    this.setState({ value: value.toString() });
   }
 
   removeFromCart() {
@@ -58,40 +62,45 @@ class AddCart extends PureComponent {
   }
 
   render() {
-    const { quantity, availableForCart } = this.props;
+    const { quantity, availableForCart, inCart } = this.props;
     const { value } = this.state;
+    const isAddButtonDisabled = !availableForCart
+      || parseInt(value, 10) < 1 || parseInt(value, 10) === inCart;
+    const isRemoveButtonDisabled = !availableForCart || inCart === 0;
     return (
-      <InputGroup className={styles.addCartContainer}>
-        <Input
-          type="number"
-          placeholder="Quantity"
-          min="1"
-          max={quantity.toString()}
-          value={value}
-          onChange={this.onChange}
-          disabled={!availableForCart}
-        />
-        <InputGroupAddon addonType="append">
-          <Button
+      <div className={styles.cartRow}>
+        <Col xs={12} sm={6} className={styles.cartCol}>
+          <Input
+            type="number"
+            placeholder="Quantity"
+            max={quantity.toString()}
+            value={value}
+            onChange={this.onChange}
             disabled={!availableForCart}
-            outline
-            color="secondary"
-            style={{ maxWidth: '50px' }}
-            onClick={this.removeFromCart}
-          >
-            <img src={cartMinusImage} alt="buy" className={styles.imageInButton} />
-          </Button>
-          <Button
-            disabled={!availableForCart}
-            outline
-            color="secondary"
-            style={{ maxWidth: '50px' }}
-            onClick={this.sendToCart}
-          >
-            <img src={cartPlusImage} alt="buy" className={styles.imageInButton} />
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
+          />
+        </Col>
+        <Col xs={12} sm={6} className={styles.cartCol}>
+          <InputGroupAddon addonType="append" className="justify-content-between">
+            <Button
+              disabled={isRemoveButtonDisabled}
+              outline
+              className={styles.buttonSize}
+              onClick={this.removeFromCart}
+            >
+              <img src={cartMinusImage} alt="buy" className={styles.imageInButton} />
+            </Button>
+            <Button
+              disabled={isAddButtonDisabled}
+              outline
+              style={{ maxWidth: '50px' }}
+              className={styles.buttonSize}
+              onClick={this.sendToCart}
+            >
+              <img src={cartPlusImage} alt="buy" className={styles.imageInButton} />
+            </Button>
+          </InputGroupAddon>
+        </Col>
+      </div>
     );
   }
 }

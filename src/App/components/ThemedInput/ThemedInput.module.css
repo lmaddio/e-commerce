@@ -1,0 +1,5 @@
+.inputSecondary:hover,
+.inputSecondary:focus {
+    border-color: var(--gray);
+    box-shadow: 0 0 0 0.2rem rgba(119, 121, 122, 0.25);
+}

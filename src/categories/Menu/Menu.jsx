@@ -5,6 +5,7 @@ import {
   DropdownToggle,
   DropdownMenu,
 } from 'reactstrap';
+import { ThemeContext } from 'App/context/ThemeContext';
 import SubMenu from './SubMenu';
 import styles from './Menu.module.css';
 
@@ -35,9 +36,13 @@ class Menu extends React.Component {
     const { dropdownOpen } = this.state;
     return (
       <Dropdown isOpen={dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-          <span>Categories</span>
-        </DropdownToggle>
+        <ThemeContext.Consumer>
+          {({ theme }) => (
+            <DropdownToggle caret color={theme}>
+              <span>Categories</span>
+            </DropdownToggle>
+          )}
+        </ThemeContext.Consumer>
         <DropdownMenu className={styles.menu}>
           <SubMenu categories={categories} depth={1}>
             <InputComponent />

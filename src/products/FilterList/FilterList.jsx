@@ -1,23 +1,14 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Collapse,
-  ListGroup,
-  ListGroupItem,
-} from 'reactstrap';
-import TitleWithCloseButton from 'App/components/TitleWithCloseButton';
+import { ListGroup } from 'reactstrap';
+import CollapsableList from 'App/components/CollapsableList';
 import CheckboxList from './Filters/CheckboxList';
 import NumberList from './Filters/NumberList';
-import styles from './FilterList.module.css';
 
 class FilterList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      displayFilter: window.innerWidth > 575,
-    };
     this.cleanFilters = this.cleanFilters.bind(this);
-    this.toggleDisplayFilter = this.toggleDisplayFilter.bind(this);
   }
 
   cleanFilters() {
@@ -25,66 +16,51 @@ class FilterList extends PureComponent {
     if (
       Object.values(usedFilters.price).filter(Boolean).length > 0
       || Object.values(usedFilters.quantity).filter(Boolean).length > 0
+      || usedFilters.id.filter(Boolean).length > 0
       || usedFilters.available || usedFilters.name || usedFilters.sublevel_id
     ) {
       cleanFilters();
     }
   }
 
-  toggleDisplayFilter() {
-    const { displayFilter } = this.state;
-    this.setState({ displayFilter: !displayFilter });
-  }
-
   render() {
-    const { usedFilters, setProductsFilter } = this.props;
+    const { usedFilters, setProductsFilter, disableAllFilters } = this.props;
     const { price, quantity, available } = usedFilters;
-    const { displayFilter } = this.state;
     return (
-      <ListGroup>
-        <ListGroupItem
-          className={styles.filterTitle}
-          color="secondary"
-        >
-          <TitleWithCloseButton
-            title="Filters"
-            onClickTitle={this.toggleDisplayFilter}
-            onClickClean={this.cleanFilters}
+      <CollapsableList
+        title="Filters"
+        closeAction={this.cleanFilters}
+        isLoading={disableAllFilters}
+      >
+        <ListGroup flush>
+          <CheckboxList
+            fluid
+            checkboxToLeft={false}
+            name="available"
+            label="Available"
+            value={available}
+            onChange={setProductsFilter}
           />
-        </ListGroupItem>
-        <Collapse isOpen={displayFilter}>
-          <ListGroupItem className={styles.setContainerPadding}>
-            <ListGroup flush>
-              <CheckboxList
-                fluid
-                checkboxToLeft={false}
-                name="available"
-                label="Available"
-                value={available}
-                onChange={setProductsFilter}
-              />
 
-              <NumberList
-                fluid
-                name="quantity"
-                label="Quantity"
-                minValue={quantity.min}
-                maxValue={quantity.max}
-                setValues={setProductsFilter}
-              />
+          <NumberList
+            fluid
+            name="quantity"
+            label="Quantity"
+            minValue={quantity.min}
+            maxValue={quantity.max}
+            setValues={setProductsFilter}
+          />
 
-              <NumberList
-                fluid
-                name="price"
-                label="Price"
-                minValue={price.min}
-                maxValue={price.max}
-                setValues={setProductsFilter}
-              />
-            </ListGroup>
-          </ListGroupItem>
-        </Collapse>
-      </ListGroup>
+          <NumberList
+            fluid
+            name="price"
+            label="Price"
+            minValue={price.min}
+            maxValue={price.max}
+            setValues={setProductsFilter}
+          />
+        </ListGroup>
+      </CollapsableList>
     );
   }
 }
@@ -103,6 +79,7 @@ FilterList.propTypes = {
     }),
     available: PropTypes.bool,
   }).isRequired,
+  disableAllFilters: PropTypes.bool.isRequired,
 };
 
 export default FilterList;
