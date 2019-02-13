@@ -16,6 +16,7 @@ const initialState = {
     lastPage: null,
   },
   filters: {
+    id: [],
     price: {
       min: null,
       max: null,

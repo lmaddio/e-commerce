@@ -2,7 +2,7 @@ import React from 'react';
 import { Spinner } from 'reactstrap';
 
 const styles = {
-  position: 'fixed',
+  position: 'absolute',
   top: 0,
   left: 0,
   bottom: 0,

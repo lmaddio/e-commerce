@@ -17,6 +17,8 @@ export function* getTokenFromCookies() {
     const token = yield call(authToken.get);
     if (token && token !== 'undefined') {
       yield put(setToken({ value: token }));
+    } else {
+      throw new Error('Token was not found');
     }
   } catch (error) {
     yield put(setTokenError(error.message));

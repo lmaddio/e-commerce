@@ -3,13 +3,13 @@ import {
   call, put, takeLatest, select,
 } from 'redux-saga/effects';
 import {
-  GET_PRODUCTS,
   FILTER_PRODUCTS,
   PAGINATION,
   SORT_PRODUCTS,
   PAGE_URI_STRING,
 } from './products.constants';
 import {
+  getProducts as getProductsAction,
   setLastPage,
   setProducts,
   cleanFilters,
@@ -64,6 +64,7 @@ export function* getFetchParams(page) {
 
 export function* fetchProducts(action) {
   try {
+    yield put(getProductsAction());
     const { payload } = action;
     const { page } = payload || {};
     const params = yield call(getFetchParams, page);
@@ -88,7 +89,6 @@ export function* fetchProducts(action) {
 
 function* productsSagas() {
   yield takeLatest([
-    GET_PRODUCTS.LOADING,
     FILTER_PRODUCTS.SET,
     FILTER_PRODUCTS.CLEAN,
     SORT_PRODUCTS.SET,

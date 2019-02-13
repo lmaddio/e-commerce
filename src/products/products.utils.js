@@ -9,7 +9,7 @@ export const convertMinMaxObject = (object, key) => {
 
 const MIN_MAX_OBJECTS = ['price', 'quantity'];
 const UNDERSCORE_STRINGS = ['sort', 'order', 'page', 'limit'];
-const LITERAL_STRINGS = ['sublevel_id', 'available'];
+const LITERAL_STRINGS = ['sublevel_id', 'available', 'id'];
 const SEARCH_STRINGS = ['name'];
 
 export const manageFilters = (filters) => {

@@ -14,7 +14,7 @@ function token(state = initialState, action) {
     case GET_TOKEN.LOADING:
       return Object.assign({}, state, { requesting: true });
     case GET_TOKEN.SUCCESS:
-      return Object.assign({}, state, tokenObject, { requesting: false });
+      return Object.assign({}, state, tokenObject, { requesting: false, error: null });
     case GET_TOKEN.ERROR:
     case CLEAN_TOKEN:
       return Object.assign({}, state, initialState, { requesting: false, error });

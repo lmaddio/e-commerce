@@ -35,9 +35,24 @@ export const authToken = {
 };
 
 class AppRequest {
+  static convertArrayToPlainKeys(key, values) {
+    let strValue = '';
+    if (values.length > 0) {
+      strValue = values.reduce((str, value, index) => {
+        const strEnd = index === (values.length - 1) ? '' : `&${key}=`;
+        return `${str}${value}${strEnd}`;
+      }, '');
+    }
+    return strValue;
+  }
+
   static buildGetUrl(url, params) {
     const finalUrl = Object.entries(params).reduce(
-      (result, [key, value]) => (value ? `${result.concat(key)}=${value}&` : result), `${url}?`,
+      (result, [key, value]) => {
+        const formattedValue = Array.isArray(value)
+          ? AppRequest.convertArrayToPlainKeys(key, value) : value;
+        return formattedValue ? `${result.concat(key)}=${formattedValue}&` : result;
+      }, `${url}?`,
     );
     return finalUrl.substring(0, finalUrl.length - 1);
   }
@@ -56,7 +71,7 @@ class AppRequest {
   static handleLogout() {
     authToken.clear();
     clearStorage();
-    throw new Error({ message: 'Token expired' });
+    throw new Error('Token expired');
   }
 
   constructor(url = '') {

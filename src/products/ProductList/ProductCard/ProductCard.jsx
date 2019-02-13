@@ -5,7 +5,6 @@ import {
   CardImg,
   CardBody,
   CardTitle,
-  CardText,
 } from 'reactstrap';
 import { addThousandsSeparator } from 'App/utils';
 import styles from './ProductCard.module.css';
@@ -39,21 +38,21 @@ class ProductCard extends PureComponent {
             </h5>
           </CardTitle>
           {/* PRICE */}
-          <CardText className={styles.description}>
+          <div className={styles.description}>
             <span className={styles.label}>Price: </span>
             <span>{`$${addThousandsSeparator(price)}`}</span>
-          </CardText>
+          </div>
           {/* QUANTITY */}
-          <CardText className={styles.description}>
+          <div className={styles.description}>
             <span className={styles.label}>Quantity: </span>
             <span>{quantity.toString()}</span>
             {/* MESSAGE IF NOT AVAILABLE */}
             {
               !available
-                ? (<span className={styles.noMoreItems}>In Pause</span>)
+                ? (<span className={styles.noMoreItems}>Stopped</span>)
                 : null
             }
-          </CardText>
+          </div>
           {children}
         </CardBody>
       </Card>

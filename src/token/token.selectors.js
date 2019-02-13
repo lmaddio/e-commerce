@@ -7,9 +7,15 @@ export const getTokenValue = createSelector(
   token => token.value,
 );
 
+export const getTokenError = createSelector(
+  getToken,
+  token => token.error,
+);
+
 export const hasUserToken = createSelector(
   getTokenValue,
-  value => Boolean(value),
+  getTokenError,
+  (value, error) => (!error && value === null ? null : Boolean(value)),
 );
 
 export const isTokenLoading = createSelector(

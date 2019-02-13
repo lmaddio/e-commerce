@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: var(--light);
     border-radius: 3px;
-    border: 1px solid var(--white);
+    border: 1px solid var(--dark);
     overflow: hidden;
     margin-bottom: 1rem;
 }
@@ -17,9 +17,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hoverable:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 21px 5px rgba(173, 177, 184, 1);
 }

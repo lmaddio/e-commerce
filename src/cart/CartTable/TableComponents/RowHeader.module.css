@@ -19,6 +19,15 @@
 
 .row:nth-of-type(odd) .cell {
     border-right-color: var(--light);
+    color: var(--light);
+}
+
+.row:nth-of-type(odd) .cell button:hover {
+    color: var(--gray-dark);
+}
+
+.row .cell button:hover {
+    color: var(--gray);
 }
 
 .cell {
@@ -33,4 +42,5 @@
 
 .cell:last-child {
     border: 0;
+    flex: 2 2 50%;
 }

@@ -53,7 +53,10 @@ class App extends React.Component {
   
     if (error) {
       return (<SuspenseFunnyMessage />);
+    } else if (hasToken === null) {
+      return (<FullLoader/>);
     }
+
     return (
       <Router>
         <div>
@@ -85,7 +88,7 @@ class App extends React.Component {
 }
 
 App.defaultProps = {
-  hasToken: false,
+  hasToken: null,
   userName: '',
 };
 

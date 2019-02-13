@@ -7,9 +7,9 @@ import {
 const RedirectLogin = ({ component: Component, isLogged, ...rest }) => (
   <Route
     {...rest}
-    component={props => (
+    render={props => (
       !isLogged
-        ? <Component {...props} key={props.location.key} />
+        ? <Component {...props} />
         : (
           <Redirect to={{
             pathname: '/',
