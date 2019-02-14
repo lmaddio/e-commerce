@@ -17,14 +17,6 @@ const SuspenseFunnyMessage = () => (
   </Suspense>
 );
 
-const withThemeScenes = (Component) => (
-  <ThemeProvider>
-    <ThemedChangeButton>
-      <Component/>
-    </ThemedChangeButton>
-  </ThemeProvider>
-);
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -66,23 +58,28 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <AppRouter.RedirectLogin
-            path="/login"
-            exact
-            isLogged={hasToken}
-            component={Login}
-          />
-          <AppRouter.PrivateRoute
-            path="/"
-            exact
-            isLogged={hasToken}
-            component={withThemeScenes(Search)}
-          />
-          <AppRouter.PrivateRoute
-            path="/cart"
-            isLogged={hasToken}
-            component={withThemeScenes(Cart)}
-          />
+          <ThemeProvider>
+            <AppRouter.RedirectLogin
+              path="/login"
+              exact
+              isLogged={hasToken}
+              component={Login}
+            />
+            {
+              hasToken && <ThemedChangeButton/>
+            }
+            <AppRouter.PrivateRoute
+              path="/"
+              exact
+              isLogged={hasToken}
+              component={Search}
+            />
+            <AppRouter.PrivateRoute
+              path="/cart"
+              isLogged={hasToken}
+              component={Cart}
+            />
+          </ThemeProvider>
         </div>
       </Router>
     );
