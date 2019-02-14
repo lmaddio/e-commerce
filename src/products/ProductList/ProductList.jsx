@@ -69,7 +69,7 @@ class ProductList extends PureComponent {
       error || (page === lastPage) || (page === 1 && (products.length % limit !== 0))
     );
     const endMessage = error === null ? undefined : error;
-    if (isLoading) {
+    if (isLoading && page === 1) {
       Content = (<Spinner />);
     } else if (products.length > 0) {
       Content = (

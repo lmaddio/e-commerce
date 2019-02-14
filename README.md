@@ -12,7 +12,7 @@ Se puede ver en [heroku :D](https://el-baraton-l.herokuapp.com/)
 
 -----
 
-Para levantar el server se deben tener disponibles los puertos **3000** y **3005**
+Para ejecutar el server se deben tener disponibles los puertos **3000** y **3005**
 Ejecutar el comando (yarn/npm)
 
 `yarn install` o `npm install`
@@ -32,3 +32,5 @@ El reporte se genera en la carpeta del proyecto **./coverage/lcov-report/index.h
 
 Tambien se suma un reporte generado con **lighthouse**, el nombre del archivo es **develop.html**
 y otro **el-baraton-l.herokuapp.com.report.html** del server funcionando en [heroku](https://el-baraton-l.herokuapp.com/)
+
+La contraseña es `123456` y el correo para ingresar es `leonardo@email.com`. Tener en cuenta que el token dura solamente 30 minutos, luego de esto el usuario sera deslogueado.

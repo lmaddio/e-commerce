@@ -4,6 +4,7 @@
     max-width: 200px;
     font-size: 0.85rem;
     float: left;
+    overflow: hidden;
 }
 
 .badge {
@@ -14,10 +15,11 @@
 
 .imageContainer {
     height: 200px;
+    max-width: 138px;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .cardImage {
@@ -79,5 +81,8 @@
 @media (min-width: 576px) {
     .childrenContainer {
         max-width: 100%;
+    }
+    .imageContainer {
+        max-width: none;
     }
 }

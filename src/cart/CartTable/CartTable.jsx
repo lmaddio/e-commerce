@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Alert from 'App/components/Alert';
+import ThemedLink from 'App/components/ThemedLink';
 import TableComponents from './TableComponents';
 import BuyButton from './Buttons/BuyButton.container';
 import HEADER_COLUMNS from './columns';
@@ -17,7 +17,7 @@ class CartTable extends React.Component {
         <h5 className="text-center">
           {errorMessage}
         </h5>
-        {!error && <Link to="/">Find some!</Link>}
+        {!error && <ThemedLink to="/" title="Find some!" navLinkProps={{ tag: 'span' }} />}
       </div>
     );
   }

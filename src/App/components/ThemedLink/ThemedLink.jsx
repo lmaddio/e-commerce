@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { NavItem } from 'reactstrap';
 import { ThemeContext, THEMES } from '../../context/ThemeContext';
 
-const ThemedLink = ({ to, title, onClick }) => (
+const ThemedLink = ({
+  to, title, onClick, navLinkProps,
+}) => (
   <ThemeContext.Consumer>
     {({ theme }) => (
-      <NavItem>
+      <NavItem {...navLinkProps}>
         <Link
           to={to}
           onClick={onClick}
@@ -23,12 +25,16 @@ const ThemedLink = ({ to, title, onClick }) => (
 ThemedLink.defaultProps = {
   to: '#',
   onClick: null,
+  navLinkProps: {},
 };
 
 ThemedLink.propTypes = {
   to: PropTypes.string,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  navLinkProps: PropTypes.shape({
+    className: PropTypes.string,
+  }),
 };
 
 export default ThemedLink;

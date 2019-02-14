@@ -36,6 +36,8 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/index.{js,jsx,ts,tsx}",
       "!src/**/*.container.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.js",
+      "!src/setupTests.js",
       "!<rootDir>/node_modules/",
       "!<rootDir>/path/to/dir/"
     ],

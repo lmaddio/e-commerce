@@ -1,8 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import {
-  BrowserRouter as Router,
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Login from './scenes/Login';
 import Search from './scenes/Search';
 import Cart from './scenes/Cart';
@@ -17,6 +15,14 @@ const SuspenseFunnyMessage = () => (
   <Suspense fallback={<FullLoader />}>
     <FunnyMessage />
   </Suspense>
+);
+
+const withThemeScenes = (Component) => (
+  <ThemeProvider>
+    <ThemedChangeButton>
+      <Component/>
+    </ThemedChangeButton>
+  </ThemeProvider>
 );
 
 class App extends React.Component {
@@ -66,21 +72,17 @@ class App extends React.Component {
             isLogged={hasToken}
             component={Login}
           />
-          <ThemeProvider>
-            <ThemedChangeButton>
-              <AppRouter.PrivateRoute
-                path="/"
-                exact
-                isLogged={hasToken}
-                component={Search}
-              />
-              <AppRouter.PrivateRoute
-                path="/cart"
-                isLogged={hasToken}
-                component={Cart}
-              />
-            </ThemedChangeButton>
-          </ThemeProvider>
+          <AppRouter.PrivateRoute
+            path="/"
+            exact
+            isLogged={hasToken}
+            component={withThemeScenes(Search)}
+          />
+          <AppRouter.PrivateRoute
+            path="/cart"
+            isLogged={hasToken}
+            component={withThemeScenes(Cart)}
+          />
         </div>
       </Router>
     );

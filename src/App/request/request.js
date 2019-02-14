@@ -1,3 +1,4 @@
+import { history } from '../router';
 import authToken from './cookies';
 import { clearStorage } from '../redux/localStorage';
 
@@ -53,6 +54,7 @@ class AppRequest {
   static handleLogout() {
     clearStorage();
     authToken.clear();
+    history.push('/');
     throw new Error('Token expired');
   }
 

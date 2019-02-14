@@ -16,6 +16,7 @@
 .buttonSize {
     max-width: 48px;
     flex-grow: 1;
+    padding: .375rem .5rem;
 }
 
 .cartCol:first-child {
