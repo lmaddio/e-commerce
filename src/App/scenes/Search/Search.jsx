@@ -22,11 +22,11 @@ class Search extends Component {
         </NavBar>
         <Container fluid>
           <Row>
-            <Col xs="12" sm="6" md="4" style={{ marginBottom: '2rem' }}>
+            <Col xs="12" sm="6" md="4">
               <div style={{ marginBottom: '1rem' }}>
                 <SortList />
               </div>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ marginBottom: '15px' }}>
                 <FilterList />
               </div>
             </Col>

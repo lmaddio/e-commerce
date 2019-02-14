@@ -1,5 +1,5 @@
 import { defineAction } from 'redux-define';
-import { COMMON_STATUS } from 'App/request';
+import { COMMON_STATUS } from 'App/request/constants';
 
 const NAMESPACE = 'PRODUCTS';
 

@@ -1,7 +1,7 @@
 import {
   call, put, takeLatest,
 } from 'redux-saga/effects';
-import { authToken } from 'App/request/request';
+import authToken from 'App/request/cookies';
 import {
   SEND_TOKEN_TO_SAGAS,
   CLEAN_TOKEN,

@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import authToken from './cookies';
 import { clearStorage } from '../redux/localStorage';
 
 export const HTTP_METHODS = {
@@ -15,24 +15,6 @@ function hasToSendBody(type, data) {
     .includes(toUpperCase);
   return isValidMethod && Boolean(data);
 }
-
-export const authToken = {
-  get() {
-    const token = Cookies.get('AUTH_COOKIE');
-    return token;
-  },
-
-  set(token) {
-    const cookiesOptions = { expires: token.expiresIn };
-    const authCookie = Cookies.set('AUTH_COOKIE', token.value, cookiesOptions);
-    return authCookie;
-  },
-
-  clear() {
-    const cookiesOptions = {};
-    Cookies.remove('AUTH_COOKIE', cookiesOptions);
-  },
-};
 
 class AppRequest {
   static convertArrayToPlainKeys(key, values) {
@@ -69,8 +51,8 @@ class AppRequest {
   }
 
   static handleLogout() {
-    authToken.clear();
     clearStorage();
+    authToken.clear();
     throw new Error('Token expired');
   }
 

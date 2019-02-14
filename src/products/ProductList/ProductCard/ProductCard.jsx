@@ -32,20 +32,20 @@ class ProductCard extends PureComponent {
         <CardBody className={styles.cardBody}>
           {/* TITLE */}
           <CardTitle className={styles.cardTitle}>
-            <h5>
-              {name}
-              <Badge id={id} className={styles.badge} />
-            </h5>
+            {name}
+            <Badge id={id} className={styles.badge} />
           </CardTitle>
           {/* PRICE */}
           <div className={styles.description}>
-            <span className={styles.label}>Price: </span>
-            <span>{`$${addThousandsSeparator(price)}`}</span>
+            <span className={styles.label}>Price:</span>
+            <span>{` $${addThousandsSeparator(price)}`}</span>
           </div>
           {/* QUANTITY */}
           <div className={styles.description}>
-            <span className={styles.label}>Quantity: </span>
-            <span>{quantity.toString()}</span>
+            <span className={styles.label}>Quantity:</span>
+            <span>
+              {quantity.toString()}
+            </span>
             {/* MESSAGE IF NOT AVAILABLE */}
             {
               !available
@@ -53,7 +53,9 @@ class ProductCard extends PureComponent {
                 : null
             }
           </div>
-          {children}
+          <div className={styles.childrenContainer}>
+            {children}
+          </div>
         </CardBody>
       </Card>
     );
